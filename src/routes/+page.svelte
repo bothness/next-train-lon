@@ -6,6 +6,10 @@
   console.debug(data);
 </script>
 
+<svelte:head>
+  <title>Rob's next train to London</title>
+</svelte:head>
+
 {#each data.trainServices as train}
 <div class="header">
   <div class="text-lg">
