@@ -14,7 +14,7 @@
 
   const swipeConfig = {
     autoplay: false,
-    transitionDuration: 500,
+    transitionDuration: 400,
     defaultIndex: 0,
   };
 </script>
@@ -34,12 +34,15 @@
     </label>
   </div>
   {#key data}
+  {#if data.trainServices[1]}
   <div class="next-prev">
     <button title="Previous" on:click={() => swipe.prevItem()}><Icon rotation="180"/></button>
     <button title="Next" on:click={() => swipe.nextItem()}><Icon/></button>
   </div>
+  {/if}
+  {#if data.trainServices[0]}
   <Swipe {...swipeConfig} bind:this={swipe}>
-    {#each data.trainServices as train, i}
+    {#each data.trainServices as train}
     <SwipeItem>
       <div class="train" class:cancelled={train.etd === "Cancelled"} class:noplatform={!train.platform && train.etd !== "Cancelled"}>
         <div class="header">
@@ -83,5 +86,13 @@
     </SwipeItem>
     {/each}
   </Swipe>
+  {:else}
+  <div class="train cancelled">
+    <div class="header">
+      <div class="text-lg">No upcoming trains</div>
+    </div>
+    <div class="body" />
+  </div>
+  {/if}
   {/key}
 </div>
