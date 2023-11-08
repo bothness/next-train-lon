@@ -4,7 +4,8 @@
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
   import { base } from "$app/paths";
-  import { Swipe, SwipeItem } from "svelte-swipe";
+  import Swipe from "$lib/bundled/Swipe.svelte";
+  import SwipeItem from "$lib/bundled/SwipeItem.svelte";
   import Icon from "$lib/Icon.svelte";
 
   export let data;
