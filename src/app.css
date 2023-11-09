@@ -41,12 +41,16 @@ body {
   position: relative;
 }
 
-.swipeable-item-inner {
+/* .swipeable-item-inner {
   max-height: 100%;
   overflow-y: scroll;
   pointer-events: all;
   scrollbar-width: none;
-  overscroll-behavior: none;;
+  overscroll-behavior: none;
+} */
+
+.swipeable-item-inner {
+  height: auto;
 }
 
 .container > .train + .train {
@@ -105,6 +109,10 @@ body {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
+  text-decoration: none;
+}
+.selector a:hover {
+  text-decoration: underline;
 }
 .selector a > span {
   margin: 0 8px;
