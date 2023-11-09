@@ -11,7 +11,7 @@
   export let data;
 
   let swipe;
-  let destination = $page.params.direction;
+  $: destination = $page.params.direction;
 
   const swipeConfig = {
     autoplay: false,
@@ -25,14 +25,12 @@
 </svelte:head>
 
 <div class="container">
-  <div class="selector">
-    <label>
-      <span>Destination</span>
-      <select bind:value={destination} on:change={() => goto(`${base}/${destination}`)}>
-        <option value="out">London Waterloo</option>
-        <option value="rtn">Southampton Airport Parkway</option>
-      </select>
-    </label>
+  <div class="selector" style:justify-content={destination === "out" ? "flex-start" : "flex-end"}>
+    {#if destination === "out"}
+    <a href="{base}/rtn/"><Icon rotation={180}/><span>View return trains</span></a>
+    {:else}
+    <a href="{base}/out/"><span>View outgoing trains</span><Icon/></a>
+    {/if}
   </div>
   {#key data}
   {#if data.trainServices[1]}
